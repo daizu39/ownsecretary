@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  dev-azure-func:
+    container_name: dev-azure-func
+    image: daizu39/dev-azure:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+    - type: bind
+      source: "${WORKDIR}"
+      target: "/root/workspace"
+    - type: bind
+      source: "${VIMUNDODIR}"
+      target: "/root/.vim/undo"
